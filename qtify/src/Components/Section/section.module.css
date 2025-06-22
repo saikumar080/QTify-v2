@@ -1,0 +1,31 @@
+.section{
+    margin: 24px 0px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.title{
+    font: weight 700px;
+}
+.grid{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.scroll{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.scroll > *{
+    flex: 0 0 auto;
+}
+.wrap{
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 1;
+    flex-flow: row wrap;
+}

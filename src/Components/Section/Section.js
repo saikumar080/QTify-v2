@@ -30,7 +30,7 @@ const Section=({title, fetchUrl})=>{
                 <Typography variant="h6" className={styles.title}>
                     {title}
                 </Typography>
-                <Button variant="text" onClick={handleToggle}>
+                <Button variant="text" onClick={handleToggle} sx={{color: "#34C94B",textTransform:"none"}}>
                     {showAll ? 'Collapse': 'Show All'}
                 </Button>
             </div>

@@ -1,5 +1,6 @@
 .section{
     margin: 24px 0px;
+    padding: 0 16px;
 }
 .header{
     display: flex;
@@ -7,25 +8,35 @@
     align-items: center;
     margin-bottom: 16px;
 }
-.title{
-    font: weight 700px;
+.title {
+    font-weight: 700;
+    color: #FFFFFF;
 }
+
 .grid{
     display:flex;
-    justify-content:space-between;
-    align-items: center;
+    gap:16px;
     margin-bottom: 16px;
 }
 .scroll{
     overflow-x: auto;
     white-space: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+}
+.scroll::-webkit-scrollbar {
+    display: none;
 }
 .scroll > *{
     flex: 0 0 auto;
 }
 .wrap{
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    flex: 1;
-    flex-flow: row wrap;
+    gap: 16px;
 }

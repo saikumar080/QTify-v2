@@ -6,7 +6,7 @@ import AlbumCard from "../Cards/Albums/AlbumCard";
 
 const Section=({title, fetchUrl})=>{
     const [albums,setAlbums]=useState([]);
-    const[showAll, setShowAll]=useState(false);
+    const[showAll, setShowAll]=useState(true);
 
     useEffect(()=>{
         const fetchAlbums=async()=>{
@@ -30,19 +30,22 @@ const Section=({title, fetchUrl})=>{
                 <Typography variant="h6" className={styles.title}>
                     {title}
                 </Typography>
-                <Typography variant="text" onClick={handleToggle} sx={{color: "#34C94B", cursor: "pointer", fontWeight: 600, userSelect: "none"}}>
+                <Typography variant="subtitle2" onClick={handleToggle} sx={{color: "#34C94B", cursor: "pointer", fontWeight: 600, userSelect: "none"}}>
                     {showAll ? 'Collapse': 'Show All'}
                 </Typography>
             </div>
             <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
-                {albums.map(album =>(
+                {albums.map(album =>{
+                    console.log(album);
+                    return(
                     <AlbumCard
                         key={album.id}
                         image={album.image}
-                        name={album.name}
-                        follows={album.follows}
+                        name={album.title}
+                        follows={album.follows} // Spread the album object to pass all properties
                     />
-                ))}
+                    )
+    })}
             </div>
         </div>
     )

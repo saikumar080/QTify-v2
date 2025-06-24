@@ -1,7 +1,7 @@
 import React,{ useEffect, useState} from "react";
 import axios from "axios";
 import styles from './section.module.css';
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import AlbumCard from "../Cards/Albums/AlbumCard";
 
 const Section=({title, fetchUrl})=>{
@@ -30,9 +30,9 @@ const Section=({title, fetchUrl})=>{
                 <Typography variant="h6" className={styles.title}>
                     {title}
                 </Typography>
-                <Button variant="text" onClick={handleToggle} sx={{color: "#34C94B",textTransform:"none"}}>
+                <Typography variant="text" onClick={handleToggle} sx={{color: "#34C94B", cursor: "pointer", fontWeight: 600, userSelect: "none"}}>
                     {showAll ? 'Collapse': 'Show All'}
-                </Button>
+                </Typography>
             </div>
             <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
                 {albums.map(album =>(

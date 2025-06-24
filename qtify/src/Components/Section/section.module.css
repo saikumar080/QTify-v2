@@ -18,16 +18,15 @@
     gap:16px;
     margin-bottom: 16px;
 }
-.scroll{
+/* .scroll{
     overflow-x: auto;
     white-space: nowrap;
     flex-wrap: nowrap;
     padding-bottom: 8px;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
-    scrollbar-width: none;
     
-}
+} */
 .scroll::-webkit-scrollbar {
     display: none;
 }
@@ -40,3 +39,16 @@
     flex-direction: row;
     gap: 16px;
 }
+/* .scrollContainer{
+    overflow: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+}
+.scrollContainer::-webkit-scrollbar {
+    display: none;
+}
+.wrapContainer{
+  width: 100%;
+} */

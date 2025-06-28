@@ -1,7 +1,6 @@
 .section{
     margin: 24px 0px;
     padding: 0 16px;
-    box-sizing: border-box;
 }
 .header{
     display: flex;
@@ -41,8 +40,3 @@
     flex-direction: row;
     gap: 16px;
 }
-
-.carouselWrapper{
-    position: relative;
-    padding-bottom: 16px;
-}   

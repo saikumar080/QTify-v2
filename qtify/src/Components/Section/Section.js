@@ -3,11 +3,13 @@ import axios from "axios";
 import styles from './section.module.css';
 import { Typography } from "@mui/material";
 import AlbumCard from "../Cards/Albums/AlbumCard";
+import Carousel from "../Carousel/Carousel";
 
 const Section=({title, fetchUrl})=>{
     const [albums,setAlbums]=useState([]);
     const[showAll, setShowAll]=useState(true);
     const [loading, setLoading] = useState(true);
+
     useEffect(()=>{
         const fetchAlbums=async()=>{
             try{
@@ -36,26 +38,44 @@ const Section=({title, fetchUrl})=>{
                     {showAll ? 'Collapse': 'Show All'}
                 </Typography>
             </div>
-            <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
-                {loading ?(
-                    <Typography variant="body1" className={styles.loading}>
-                        Loading albums...
-                    </Typography>
-                ):(
-                    albums.map(album =>{
-                    console.log(album);
-                    return(
-
+            {loading ?(
+                <Typography variant="body1" className={styles.loading}>
+                    Loading albums...
+                </Typography>
+            ): showAll ?(
+                  <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
+              {albums.map(album =>(
                     <AlbumCard
                         key={album.id}
                         image={album.image}
                         name={album.title}
                         follows={album.follows} // Spread the album object to pass all properties
                     />
-                    )})
-                ) }
-              
+                    ))}
             </div>
+            ):(
+                <div className={styles.carouselWrapper}>
+                    <Carousel
+                        data={albums}
+                        renderItem={(album) => (
+                            <AlbumCard
+                                key={album.id}
+                                image={album.image}
+                                name={album.title}
+                                follows={album.follows} // Spread the album object to pass all properties
+                            />
+                        )}
+                        breakpoints={{
+                            320:{slidesPerView: 2},
+                            640:{slidesPerView: 3},
+                            768:{slidesPerView: 4},
+                            1024:{slidesPerView: 5},
+                            1280:{slidesPerView: 6},
+                        }}
+                    />
+                </div>
+            )}
+          
         </div>
     )
 }

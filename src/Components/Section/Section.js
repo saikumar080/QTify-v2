@@ -7,7 +7,7 @@ import AlbumCard from "../Cards/Albums/AlbumCard";
 const Section=({title, fetchUrl})=>{
     const [albums,setAlbums]=useState([]);
     const[showAll, setShowAll]=useState(true);
-
+    const [loading, setLoading] = useState(true);
     useEffect(()=>{
         const fetchAlbums=async()=>{
             try{
@@ -16,6 +16,8 @@ const Section=({title, fetchUrl})=>{
             
             }catch(err){
                 console.error("Error fetching albums:", err)
+            }finally{
+                setLoading(false);
             }
         };
         fetchAlbums();
@@ -35,17 +37,24 @@ const Section=({title, fetchUrl})=>{
                 </Typography>
             </div>
             <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
-                {albums.map(album =>{
+                {loading ?(
+                    <Typography variant="body1" className={styles.loading}>
+                        Loading albums...
+                    </Typography>
+                ):(
+                    albums.map(album =>{
                     console.log(album);
                     return(
+
                     <AlbumCard
                         key={album.id}
                         image={album.image}
                         name={album.title}
                         follows={album.follows} // Spread the album object to pass all properties
                     />
-                    )
-    })}
+                    )})
+                ) }
+              
             </div>
         </div>
     )
